@@ -1,4 +1,4 @@
-# nvidia-docker image for EWBF's CUDA Zcash miner
+# nvidia-docker image for EWBF's CUDA Bitcoin Gold miner
 
 This image build [EWBF's CUDA Bitcoin Gold miner] from EWBF's GitHub page.
 It requires a CUDA compatible docker implementation so you should probably go
@@ -27,9 +27,9 @@ nvidia-docker pull earthlablux/ewbf-cuda-btg-miner:latest
 nvidia-docker run -it --rm earthlablux/ewbf-cuda-btg-miner /root/ewbf-btg-miner --help
 ```
 
-An example command line to mine using miningpoolhub.com (on my account, you can use it to actually mine something for real if you haven't choose your pool yet):
+An example command line to mine using goldenshow.io:
 ```
-nvidia-docker run -it --rm --name ewbf-cuda-btg-miner earthlablux/ewbf-cuda-btg-miner /root/ewbf-btg-miner --server europe.equihash-hub.miningpoolhub.com --port 20570 --user acecile.mesos-earthlab --pass x --fee 0
+nvidia-docker run -it --rm --name ewbf-cuda-btg-miner earthlablux/ewbf-cuda-btg-miner /root/ewbf-btg-miner --server btg.goldenshow.io --user YOUR_WALLET_ADDRESS.worker --pass x --port 3857 --fee 0
 ```
 
 Ouput will looks like:
@@ -59,7 +59,7 @@ Total speed: 433 Sol/s
 ## Background job running forever
 
 ```
-nvidia-docker run -dt --restart=always -p 8484:42000 --name ewbf-cuda-btg-miner earthlablux/ewbf-cuda-btg-miner /root/miner --server europe.equihash-hub.miningpoolhub.com --port 20570 --user acecile.mesos-earthlab --pass x --fee 0 --api 0.0.0.0:42000
+nvidia-docker run -dt --restart=always -p 8484:42000 --name ewbf-cuda-btg-miner earthlablux/ewbf-cuda-btg-miner /root/ewbf-btg-miner --server btg.goldenshow.io --user YOUR_WALLET_ADDRESS.worker --pass x --port 3857 --fee 0 --api 0.0.0.0:42000
 ```
 
 You can check the output using `docker logs ewbf-cuda-btg-miner -f` 
@@ -68,7 +68,7 @@ You are supposed to have an HTTP API available on host on port 8484 but it doesn
 
 ## Use it with Mesos/Marathon
 
-Edit `mesos_marathon.json` to replace Zcash mining pool parameter, change application path as well as docker image address (if you dont want to use public docker image provided).
+Edit `mesos_marathon.json` to replace Bitcoin Gold mining pool parameter, change application path as well as docker image address (if you dont want to use public docker image provided).
 Then simply run (adapt application name here too):
 
 ```
@@ -97,6 +97,6 @@ Fri Aug 18 15:34:37 2017
 +-----------------------------------------------------------------------------+
 ```
 
-[EWBF's CUDA Zcash miner]: https://bitcointalk.org/index.php?topic=1707546.0
+[EWBF's CUDA Bitcoin Gold miner]: https://github.com/poolgold/ewbf-miner-btg-edition/releases
 [nvidia-docker]: https://github.com/NVIDIA/nvidia-docker
 [Mesos]: http://mesos.apache.org/documentation/latest/gpu-support/
