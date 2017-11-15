@@ -14,9 +14,8 @@ RUN apt update \
     && rm -rf /var/lib/apt/lists/*
 
 # Install dependencies
-RUN sed -i 's!\smain$! main contrib non-free!' /etc/apt/sources.list \
-    && apt update \
-    && apt -y -o 'Dpkg::Options::=--force-confdef' -o 'Dpkg::Options::=--force-confold' --no-install-recommends install wget unzip ca-certificates libnvidia-ml1 nvidia-smi \
+RUN apt update \
+    && apt -y -o 'Dpkg::Options::=--force-confdef' -o 'Dpkg::Options::=--force-confold' --no-install-recommends install wget unzip ca-certificates \
     && rm -rf /var/lib/apt/lists/*
 
 # Install binary
