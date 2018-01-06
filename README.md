@@ -8,7 +8,7 @@ It has also been tested successfully on [Mesos] 1.2.1.
 ## Build images
 
 ```
-git clone https://github.com/EarthLab-Luxembourg/docker-ewbf-cuda-btg-miner
+git clone https://github.com/eLvErDe/docker-ewbf-cuda-btg-miner
 cd docker-ewbf-cuda-btg-miner
 docker build -t ewbf-cuda-btg-miner .
 ```
@@ -23,13 +23,13 @@ docker push docker.domain.com/mining/ewbf-cuda-btg-miner
 ## Test it (using dockerhub published image)
 
 ```
-nvidia-docker pull earthlablux/ewbf-cuda-btg-miner:latest
-nvidia-docker run -it --rm earthlablux/ewbf-cuda-btg-miner /root/ewbf-btg-miner --help
+nvidia-docker pull acecile/ewbf-cuda-btg-miner:latest
+nvidia-docker run -it --rm acecile/ewbf-cuda-btg-miner /root/ewbf-btg-miner --help
 ```
 
 An example command line to mine using goldenshow.io:
 ```
-nvidia-docker run -it --rm --name ewbf-cuda-btg-miner earthlablux/ewbf-cuda-btg-miner /root/ewbf-btg-miner --server btg.goldenshow.io --user YOUR_WALLET_ADDRESS.worker --pass x --port 3857 --fee 0
+nvidia-docker run -it --rm --name ewbf-cuda-btg-miner acecile/ewbf-cuda-btg-miner /root/ewbf-btg-miner --server btg.goldenshow.io --user YOUR_WALLET_ADDRESS.worker --pass x --port 3857 --fee 0
 ```
 
 Ouput will looks like:
@@ -67,7 +67,7 @@ Yes it's displaying it's a ZCash miner but it's not.
 ## Background job running forever
 
 ```
-nvidia-docker run -dt --restart=unless-stopped -p 8484:42000 --name ewbf-cuda-btg-miner earthlablux/ewbf-cuda-btg-miner /root/ewbf-btg-miner --server btg.goldenshow.io --user YOUR_WALLET_ADDRESS.worker --pass x --port 3857 --fee 0 --api 0.0.0.0:42000
+nvidia-docker run -dt --restart=unless-stopped -p 8484:42000 --name ewbf-cuda-btg-miner acecile/ewbf-cuda-btg-miner /root/ewbf-btg-miner --server btg.goldenshow.io --user YOUR_WALLET_ADDRESS.worker --pass x --port 3857 --fee 0 --api 0.0.0.0:42000
 ```
 
 You can check the output using `docker logs ewbf-cuda-btg-miner -f` 
