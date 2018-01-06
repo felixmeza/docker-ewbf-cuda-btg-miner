@@ -9,7 +9,7 @@
   "container": {
     "type": "MESOS",
     "docker": {
-      "image": "earthlablux/ewbf-cuda-btg-miner:latest",
+      "image": "acecile/ewbf-cuda-btg-miner:latest",
       "forcePullImage": true
     }
   }
